@@ -18,13 +18,14 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .searchbar {
   padding: 10px 0;
   text-indent: 2em;
   font-size: 16pt;
+  border: none;
   background: $wrap-back-color;
-  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: $searchbar-box-shadow;
   border-radius: 100px;
 }
 </style>
