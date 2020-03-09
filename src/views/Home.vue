@@ -1,12 +1,25 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <Logo height="150" />
+    <SearchBar width="75%" />
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import Logo from '@/components/Logo';
+import SearchBar from '@/components/SearchBar';
 
 export default {
   name: 'Home',
-  components: {},
+  components: { Logo, SearchBar },
 };
 </script>
+
+<style lang="scss">
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+</style>
