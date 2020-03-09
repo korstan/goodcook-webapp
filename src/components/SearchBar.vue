@@ -1,5 +1,5 @@
 <template>
-  <input class="searchbar" :style="{ fontSize, width }"></input>
+  <input class="searchbar" :style="{ fontSize, height, width }"></input>
 </template>
 
 <script>
@@ -9,6 +9,10 @@ export default {
     fontSize: {
       type: [String],
       default: '16pt',
+    },
+    height: {
+      type: [String],
+      default: '1em',
     },
     width: {
       type: [String],

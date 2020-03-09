@@ -1,27 +1,37 @@
 <template>
   <header class="header" :style="currentMood.isOk ? { boxShadow: 'none' } : {}">
-    <Logo width="100" height="50" :style="currentMood.isOk ? { visibility: 'hidden' } : {}" />
+    <Logo
+      width="100"
+      height="50"
+      :style="currentMood.isOk ? { visibility: 'hidden' } : {}"
+    />
     <form action="" :style="currentMood.isOk ? { visibility: 'hidden' } : {}">
       <input type="text" name="search" id="search" /><button>Search</button>
     </form>
     <nav>
       <a href="" @click="changeMood">{{ currentMood.msg }}</a>
-      <a href="">Home</a>
-      <a href="">Recipes</a>
-      <a href="">About</a>
+      <NavLink @navLinkClick="$router.push('/')" title="Frame 1" />
+      <NavLink @navLinkClick="$router.push('/frame2')" title="Frame 2" />
+      <NavLink @navLinkClick="$router.push('/about')" title="About" />
     </nav>
   </header>
 </template>
 
 <script>
 import Logo from '@/components/Logo';
+import NavLink from '@/components/NavLink';
 
 export default {
+  name: 'Header',
+  components: {
+    Logo,
+    NavLink,
+  },
   data() {
     return {
       currentMood: {
-        isOk: false,
-        msg: 'Сделать красиво',
+        isOk: true,
+        msg: 'Сделать страшно',
       },
     };
   },
@@ -33,8 +43,6 @@ export default {
         : { isOk: true, msg: 'Сделать страшно' };
     },
   },
-  name: 'Header',
-  components: { Logo },
 };
 </script>
 

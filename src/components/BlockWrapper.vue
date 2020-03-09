@@ -22,5 +22,6 @@ export default {
 .block-wrapper {
   background: $wrap-back-color;
   box-shadow: $wrap-box-shadow;
+  border-radius: $wrap-border-radius;
 }
 </style>

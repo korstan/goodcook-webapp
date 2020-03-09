@@ -24,7 +24,6 @@ export default {
 
 .page-wrapper {
   margin: 50px $page-margin-h;
-  height: 8000px;
   background-color: white;
 }
 </style>

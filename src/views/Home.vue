@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <Logo height="150" />
-    <SearchBar width="75%" />
+    <Logo height="160" width="300" />
+    <SearchBar width="50%" />
   </div>
 </template>
 
@@ -17,6 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+  padding-top: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
