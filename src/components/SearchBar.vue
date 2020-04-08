@@ -1,5 +1,5 @@
 <template>
-  <input class="searchbar" :style="{ fontSize, height, width }"></input>
+  <input class="searchbar m-t-20" :style="{ fontSize, height, width }"></input>
 </template>
 
 <script>
