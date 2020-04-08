@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Logo height="160" width="300" />
+    <Logo />
     <SearchBar width="50%" />
   </div>
 </template>
