@@ -1,8 +1,10 @@
 <template>
-  <div class="home">
-    <Logo />
-    <SearchBar width="50%" />
-  </div>
+  <v-scroll-y-reverse-transition>
+    <v-container v-if="!isHide" class="home">
+      <Logo />
+      <SearchBar width="50%" @submit="() => (isHide = true)" />
+    </v-container>
+  </v-scroll-y-reverse-transition>
 </template>
 
 <script>
@@ -12,6 +14,11 @@ import SearchBar from '@/components/SearchBar';
 export default {
   name: 'Home',
   components: { Logo, SearchBar },
+  data() {
+    return {
+      isHide: false,
+    };
+  },
 };
 </script>
 

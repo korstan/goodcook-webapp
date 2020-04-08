@@ -6,6 +6,7 @@
     background-color="grey lighten-4"
     shaped
     class="searchbar m-t-20"
+    v-on:keyup="checkPressedKey"
     :style="{ fontSize, height, width }"
   ></v-text-field>
 </template>
@@ -25,6 +26,13 @@ export default {
     width: {
       type: [String],
       default: '100%',
+    },
+  },
+  methods: {
+    checkPressedKey: function(e) {
+      if (e.keyCode === 13) {
+        this.$emit('submit');
+      }
     },
   },
 };
