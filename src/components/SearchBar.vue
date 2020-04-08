@@ -1,5 +1,10 @@
 <template>
-  <input class="searchbar m-t-20" :style="{ fontSize, height, width }"></input>
+  <v-text-field
+    solo
+    shaped
+    class="m-t-20"
+    :style="{ fontSize, height, width }"
+  ></v-text-field>
 </template>
 
 <script>
@@ -22,14 +27,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.searchbar {
-  padding: 10px 0;
-  text-indent: 2em;
-  font-size: 16pt;
-  border: none;
-  background: $wrap-back-color;
-  box-shadow: $searchbar-box-shadow;
-  border-radius: 100px;
-}
-</style>
+<style lang="scss" scoped></style>

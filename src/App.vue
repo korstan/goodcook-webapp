@@ -1,13 +1,20 @@
 <template>
-  <div id="app">
-    <div class="page-wrapper"><router-view /></div>
-  </div>
+  <v-app>
+    <Header />
+    <v-content>
+      <div id="app">
+        <div class="page-wrapper"><router-view /></div>
+      </div>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
+import Header from '@/components/Header';
+
 export default {
   name: 'App',
-  components: {},
+  components: { Header },
 };
 </script>
 

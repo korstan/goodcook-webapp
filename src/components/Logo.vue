@@ -1,11 +1,25 @@
 <template>
-  <img src="../assets/logo.png" alt="" srcset="" />
+  <v-img
+    :width="width"
+    :height="height"
+    contain
+    src="@/assets/logo.png"
+    alt=""
+    srcset=""
+  />
 </template>
 
 <script>
 export default {
   name: 'Logo',
-  props: {},
+  props: {
+    width: {
+      type: [Number, String],
+    },
+    height: {
+      type: [Number, String],
+    },
+  },
 };
 </script>
 
