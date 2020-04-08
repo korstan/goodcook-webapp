@@ -1,8 +1,11 @@
 <template>
   <v-text-field
     solo
+    prepend-inner-icon="mdi-magnify"
+    color="amber lighten-1"
+    background-color="grey lighten-4"
     shaped
-    class="m-t-20"
+    class="searchbar m-t-20"
     :style="{ fontSize, height, width }"
   ></v-text-field>
 </template>
@@ -27,4 +30,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.searchbar {
+  border-radius: 100px;
+}
+</style>
