@@ -1,0 +1,29 @@
+@mixin indentGenerator($infix:null) {
+    @each $prop, $abbrev in (margin: m, padding: p) {
+        @for $spacer from 0 to 200 {
+            @if $spacer%5 == 0 {
+                .#{$abbrev}-a#{$infix}-#{$spacer} {
+                    #{$prop}: rem-calc($spacer);
+                }
+                .#{$abbrev}-t#{$infix}-#{$spacer},
+                .#{$abbrev}-y#{$infix}-#{$spacer} {
+                    #{$prop}-top: rem-calc($spacer);
+                }
+                .#{$abbrev}-r#{$infix}-#{$spacer},
+                .#{$abbrev}-x#{$infix}-#{$spacer} {
+                    #{$prop}-right: rem-calc($spacer);
+                }
+                .#{$abbrev}-b#{$infix}-#{$spacer},
+                .#{$abbrev}-y#{$infix}-#{$spacer} {
+                    #{$prop}-bottom: rem-calc($spacer);
+                }
+                .#{$abbrev}-l#{$infix}-#{$spacer},
+                .#{$abbrev}-x#{$infix}-#{$spacer} {
+                    #{$prop}-left: rem-calc($spacer);
+                }
+            }
+        }
+    }
+}
+
+@include indentGenerator();
