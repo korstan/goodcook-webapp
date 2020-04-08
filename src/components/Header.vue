@@ -64,7 +64,7 @@ form {
 
 input {
   padding: 0;
-  box-shadow: 1px 1px 1px gray;
+  box-shadow: 1px 1px 1px $gray;
   height: 100%;
   width: 50%;
   background-color: whitesmoke;
@@ -78,7 +78,7 @@ button {
   box-shadow: 1px 1px 1px gray;
   cursor: pointer;
   height: 100%;
-  background-color: $main-color;
+  background-color: $primary-color;
   border: none;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
