@@ -1,18 +1,16 @@
 <template>
   <div id="app">
-    <Header />
     <div class="page-wrapper"><router-view /></div>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header';
-
 export default {
   name: 'App',
-  components: { Header },
+  components: {},
 };
 </script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
