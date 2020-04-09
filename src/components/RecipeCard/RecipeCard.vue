@@ -1,8 +1,8 @@
 <template>
-  <v-card width="500">
+  <v-card shaped width="500" class="recipe-card">
     <v-card-title>{{ this.title }}</v-card-title>
     <v-card-text v-for="ingredient in ingredients" :key="ingredient.name">
-      {{ ingredient.name }} - {{ ingredient.measure }}
+      {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.measure }}
     </v-card-text>
   </v-card>
 </template>
@@ -50,4 +50,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.recipe-card {
+  border-radius: 100px;
+}
+</style>
