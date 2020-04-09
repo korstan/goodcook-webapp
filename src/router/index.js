@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Frame2 from '../views/Frame2.vue';
 import Search from '../views/Search.vue';
+import Chose from '../views/Chose.vue';
 
 Vue.use(VueRouter);
 
@@ -31,6 +32,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
+  {
+    path: '/chose',
+    name: 'Chose',
+    component: Chose,
+  }
 ];
 
 const router = new VueRouter({

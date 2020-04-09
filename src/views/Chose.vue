@@ -1,0 +1,40 @@
+<template>
+  <div class="choseMenu m-t-125">
+    <h1 class="choseMenu__title text-center">This is an chose page</h1>
+    <div class="choseMenu__card m-t-50">
+      <div>
+        <choseButton class="p-t-30 p-b-0">
+          <v-img contain src="@/assets/recipes-logo.svg" alt="" srcset="" />
+        </choseButton>
+        <h2 class="text-center m-t-30">я знаю чего я хочу</h2>
+      </div>
+      <div>
+        <choseButton>
+          <v-img contain src="@/assets/ingredients-logo.svg" alt="" srcset="" />
+        </choseButton>
+        <h2 class="text-center m-t-30">я не знаю чего я хочу</h2>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import choseButton from "@/components/ChoseButton.vue";
+
+export default {
+  name: "Chose",
+  components: { choseButton },
+};
+</script>
+
+<style lang="scss" scoped>
+.choseMenu {
+  &__titile {
+  }
+  &__card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+</style>
