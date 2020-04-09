@@ -1,14 +1,17 @@
 <template>
   <v-text-field
     solo
-    prepend-inner-icon="mdi-magnify"
     color="amber lighten-1"
     background-color="grey lighten-4"
     shaped
     class="searchbar m-t-20"
     v-on:keyup="checkPressedKey"
     :style="{ fontSize, height, width }"
-  ></v-text-field>
+  >
+    <template v-slot:prepend-inner>
+      <v-icon @click="submit" class="searchbar__icon">mdi-magnify</v-icon>
+    </template>
+  </v-text-field>
 </template>
 
 <script>
@@ -44,5 +47,8 @@ export default {
 <style lang="scss" scoped>
 .searchbar {
   border-radius: 100px;
+}
+.searchbar__icon {
+  cursor: pointer;
 }
 </style>
