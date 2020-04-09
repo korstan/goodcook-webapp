@@ -1,5 +1,5 @@
 <template>
-  <v-card width="500" height="700"> </v-card>
+  <v-card tile class="side-menu" color="#ffe27a" height="700"> </v-card>
 </template>
 
 <script>
@@ -9,6 +9,5 @@ export default {};
 <style lang="scss" scoped>
 .side-menu {
   border-radius: 100px;
-  background-color: $primary-color-light;
 }
 </style>

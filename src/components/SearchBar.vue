@@ -4,10 +4,10 @@
     color="amber lighten-1"
     :background-color="backgroundColor"
     shaped
-    class="searchbar mt-2"
+    class="searchbar"
     v-on:keyup="checkPressedKey"
     :height="height"
-    :style="{ fontSize, width, height: '100%' }"
+    :style="{ fontSize, width }"
     v-model="query"
   >
     <template v-slot:prepend-inner>

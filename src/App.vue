@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <Header v-if="isHeaderVisible" />
     <v-content>
       <div id="app">
         <div class="page-wrapper">

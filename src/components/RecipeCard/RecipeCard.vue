@@ -1,5 +1,5 @@
 <template>
-  <v-card shaped width="500" class="recipe-card">
+  <v-card shaped class="recipe-card">
     <v-card-title>{{ this.title }}</v-card-title>
     <v-card-text v-for="ingredient in ingredients" :key="ingredient.name">
       {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.measure }}
