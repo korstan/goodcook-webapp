@@ -19,11 +19,8 @@ export default {
   display: flex;
   padding: 10px;
   align-self: center;
-   transition: 0.18s all ease-out;
-  &:hover{
-    cursor: pointer;
-    transition: 0.18s all ease-in;
-    transform: scale(1.03);
+  &:hover {
+
   }
 }
 </style>
