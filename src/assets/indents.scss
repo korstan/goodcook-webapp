@@ -1,6 +1,6 @@
 @mixin indentGenerator($infix:null) {
     @each $prop, $abbrev in (margin: m, padding: p) {
-        @for $spacer from 0 to 100 {
+        @for $spacer from 0 to 150 {
             @if $spacer%5 == 0 {
                 .#{$abbrev}-a#{$infix}-#{$spacer} {
                     #{$prop}: ($spacer+px);
