@@ -3,7 +3,7 @@
     :width="width"
     :height="height"
     contain
-    src="@/assets/logo.png"
+    src="@/assets/logo.svg"
     alt=""
     srcset=""
   />
