@@ -1,7 +1,9 @@
 <template>
-  <v-app-bar app>
-    <v-toolbar-title><Logo height="70"/></v-toolbar-title>
-  </v-app-bar>
+  <v-fade-transition>
+    <v-app-bar app>
+      <v-toolbar-title><Logo height="70"/></v-toolbar-title>
+    </v-app-bar>
+  </v-fade-transition>
 </template>
 
 <script>

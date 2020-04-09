@@ -31,8 +31,11 @@ export default {
   methods: {
     checkPressedKey: function(e) {
       if (e.keyCode === 13) {
-        this.$emit('submit');
+        this.submit();
       }
+    },
+    submit: function() {
+      this.$emit('submit');
     },
   },
 };

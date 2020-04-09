@@ -1,29 +1,34 @@
 <template>
-  <v-scroll-y-reverse-transition>
-    <v-container v-if="!isHide" class="home">
-      <Logo />
-      <SearchBar width="50%" @submit="() => (isHide = true)" />
-    </v-container>
-  </v-scroll-y-reverse-transition>
+  <v-container class="home">
+    <Logo />
+    <SearchBar width="50%" @submit="onSearchSubmit" />
+  </v-container>
 </template>
 
 <script>
 import Logo from '@/components/Logo';
 import SearchBar from '@/components/SearchBar';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Home',
   components: { Logo, SearchBar },
-  data() {
-    return {
-      isHide: false,
-    };
+  mounted() {
+    this.HIDE_HEADER();
+  },
+  methods: {
+    ...mapActions('ui', ['SHOW_HEADER', 'HIDE_HEADER', 'TOGGLE_HEADER']),
+    onSearchSubmit: function() {
+      this.$router.push('/search');
+      this.SHOW_HEADER();
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .home {
+  position: absolute;
   padding-top: 150px;
   display: flex;
   flex-direction: column;
