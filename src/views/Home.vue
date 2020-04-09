@@ -18,8 +18,10 @@ export default {
   },
   methods: {
     ...mapActions('ui', ['SHOW_HEADER', 'HIDE_HEADER', 'TOGGLE_HEADER']),
-    onSearchSubmit: function() {
+    ...mapActions('search', ['NEW_QUERY']),
+    onSearchSubmit: function(query) {
       this.$router.push('/search');
+      this.NEW_QUERY(query);
       this.SHOW_HEADER();
     },
   },

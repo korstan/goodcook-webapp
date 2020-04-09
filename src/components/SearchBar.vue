@@ -2,11 +2,13 @@
   <v-text-field
     solo
     color="amber lighten-1"
-    background-color="grey lighten-4"
+    :background-color="backgroundColor"
     shaped
-    class="searchbar m-t-20"
+    class="searchbar mt-2"
     v-on:keyup="checkPressedKey"
-    :style="{ fontSize, height, width }"
+    :height="height"
+    :style="{ fontSize, width, height: '100%' }"
+    v-model="query"
   >
     <template v-slot:prepend-inner>
       <v-icon @click="submit" class="searchbar__icon">mdi-magnify</v-icon>
@@ -18,18 +20,31 @@
 export default {
   name: 'SearchBar',
   props: {
+    value: {
+      type: [String],
+      default: '',
+    },
     fontSize: {
       type: [String],
       default: '16pt',
     },
     height: {
       type: [String],
-      default: '1em',
+      default: '1',
     },
     width: {
       type: [String],
       default: '100%',
     },
+    backgroundColor: {
+      type: [String],
+      default: 'grey lighten-4',
+    },
+  },
+  data() {
+    return {
+      query: this.value,
+    };
   },
   methods: {
     checkPressedKey: function(e) {
@@ -38,7 +53,7 @@ export default {
       }
     },
     submit: function() {
-      this.$emit('submit');
+      this.$emit('submit', this.query);
     },
   },
 };
