@@ -2,7 +2,11 @@
   <v-content>
     <v-row justify="space-between" align="center">
       <v-col cols="3">
-        <Logo />
+        <Logo
+          height="220"
+          @logoClick="() => this.$router.push('/')"
+          :style="{ cursor: 'pointer' }"
+        />
       </v-col>
       <v-col cols="8">
         <SearchBar :value="query" class="mt-6" />

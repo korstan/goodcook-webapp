@@ -53,7 +53,7 @@ export default {
       }
     },
     submit: function() {
-      this.$emit('submit', this.query);
+      if (this.query) this.$emit('submit', this.query);
     },
   },
 };

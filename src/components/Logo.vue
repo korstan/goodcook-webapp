@@ -1,5 +1,6 @@
 <template>
   <v-img
+    @click="() => this.$emit('logoClick')"
     :width="width"
     :height="height"
     contain
