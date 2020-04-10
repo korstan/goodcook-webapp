@@ -17,35 +17,49 @@
         <SideMenu />
       </v-col>
       <v-col cols="8">
-        <RecipeCard class="mb-10" />
-        <RecipeCard class="mb-10" />
-        <RecipeCard class="mb-10" />
-        <RecipeCard class="mb-10" />
+        <RecipeCard v-for="recipe in recipes" :key="recipe.name" :recipe="recipe" class="mb-10" />
       </v-col>
     </v-row>
   </v-content>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 import Logo from '@/components/Logo.vue';
 import SideMenu from '@/components/SideMenu/SideMenu.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import RecipeCard from '@/components/RecipeCard/RecipeCard.vue';
-import { mapActions } from 'vuex';
+
+import { RepositoryFactory } from '@/utils/repository/factory';
+const Recipes = RepositoryFactory.get('recipes');
 
 export default {
   name: 'Search',
   components: { Logo, SideMenu, SearchBar, RecipeCard },
-  mounted() {
-    this.SHOW_HEADER();
-  },
-  methods: {
-    ...mapActions('ui', ['SHOW_HEADER']),
+  data() {
+    return {
+      isLoading: false,
+      recipes: [],
+    };
   },
   computed: {
     query() {
       return this.$store.state.search.query;
     },
+  },
+  created() {
+    this.fetch();
+  },
+  methods: {
+    async fetch() {
+      const req = [this.query];
+      console.log(req);
+      this.isLoading = true;
+      const { data } = await Recipes.get(req);
+      this.isLoading = false;
+      this.recipes = data.recipes.slice(0,10);
+    }
   },
 };
 </script>
