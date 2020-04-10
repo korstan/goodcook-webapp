@@ -1,8 +1,10 @@
 <template>
-  <v-container class="home">
-    <Logo />
-    <SearchBar width="50%" @submit="onSearchSubmit" />
-  </v-container>
+  <v-content>
+    <div class="home d-flex flex-column align-center">
+      <Logo class="mb-5" />
+      <SearchBar width="60%" @submit="onSearchSubmit" />
+    </div>
+  </v-content>
 </template>
 
 <script>
@@ -18,18 +20,13 @@ export default {
     onSearchSubmit: function(query) {
       this.$router.push('/search');
       this.NEW_QUERY(query);
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .home {
-  position: absolute;
   padding-top: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 </style>
