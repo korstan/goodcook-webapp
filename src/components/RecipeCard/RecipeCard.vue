@@ -3,7 +3,7 @@
     <v-card-title>{{ recipe.name }}</v-card-title>
     <v-card-text
       v-for="ingredient in recipe.ingredients"
-      :key="ingredient.name"
+      :key="recipe.name + '_' + ingredient.name"
     >
       {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.measure }}
     </v-card-text>

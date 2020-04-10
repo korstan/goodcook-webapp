@@ -17,7 +17,20 @@
         <SideMenu />
       </v-col>
       <v-col cols="8">
-        <RecipeCard v-for="recipe in recipes" :key="recipe.name" :recipe="recipe" class="mb-10" />
+        <v-skeleton-loader
+          v-if="isLoading"
+          v-for="n in 3"
+          :key="n"
+          min-width="100%"
+          type="card"
+        ></v-skeleton-loader>
+        <RecipeCard
+          v-else
+          v-for="recipe in recipes"
+          :key="recipe.name"
+          :recipe="recipe"
+          class="mb-10"
+        />
       </v-col>
     </v-row>
   </v-content>
@@ -40,13 +53,13 @@ export default {
   data() {
     return {
       isLoading: false,
-      recipes: [],
+      recipes: []
     };
   },
   computed: {
     query() {
       return this.$store.state.search.query;
-    },
+    }
   },
   created() {
     this.fetch();
@@ -58,9 +71,9 @@ export default {
       this.isLoading = true;
       const { data } = await Recipes.get(req);
       this.isLoading = false;
-      this.recipes = data.recipes.slice(0,10);
+      this.recipes = data.recipes.slice(0, 10);
     }
-  },
+  }
 };
 </script>
 
