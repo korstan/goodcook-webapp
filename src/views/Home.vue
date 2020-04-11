@@ -18,7 +18,7 @@ export default {
   methods: {
     ...mapActions('search', ['NEW_QUERY']),
     onSearchSubmit: function(query) {
-      this.$router.push(`/search_results?mode=${this.$route.query.mode}`);
+      this.$router.push(`/search_results?mode=${this.$route.query.mode || 'ingredients'}`);
       this.NEW_QUERY(query);
     }
   },
