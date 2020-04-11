@@ -34,7 +34,6 @@ export default {
     },
     width: {
       type: [String],
-      default: '100%',
     },
     backgroundColor: {
       type: [String],

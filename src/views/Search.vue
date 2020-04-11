@@ -3,7 +3,7 @@
     <v-row justify="space-between" align="center">
       <v-col cols="3" class="d-flex">
         <Logo
-          height="220"
+          height="120"
           @logoClick="() => this.$router.push('/')"
           :style="{ cursor: 'pointer' }"
         />
@@ -13,9 +13,11 @@
           :key="query"
           @submit="searchNewQuery"
           :value="query"
-          class="mt-6"
+          class="mt-6 ml-11"
         />
       </v-col>
+      <v-col cols="1">
+        </v-col>
     </v-row>
     <v-row justify="space-between">
       <v-col cols="3">
@@ -28,16 +30,20 @@
           :key="n"
           min-width="100%"
           type="card"
+          class="mb-10 ml-11"
         ></v-skeleton-loader>
         <RecipeCard
           @ingredientClick="searchNewQuery"
+
           v-else
           v-for="recipe in recipes"
           :key="recipe.name"
           :recipe="recipe"
-          class="mb-10"
+          class="mb-10 ml-11"
         />
       </v-col>
+      <v-col cols="1">
+        </v-col>
     </v-row>
   </v-content>
 </template>

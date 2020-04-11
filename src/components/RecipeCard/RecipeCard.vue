@@ -2,7 +2,7 @@
   <v-sheet color="grey lighten-4" shaped class="recipe-card wrap-box">
     <v-row class="mb-4">
       <v-col cols="8">
-        <div class="display-1 mb-4">{{ recipe.name }}</div>
+        <div class="display-1 mb-4 pl-0">{{ recipe.name }}</div>
         <div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ex
           nulla, eleifend id sapien eu, facilisis condimentum metus. Nullam vel
@@ -14,7 +14,7 @@
           mollis imperdiet. Mauris dapibus dignissim nisi non tincidunt.
         </div>
       </v-col>
-      <v-col cols="4"> </v-col>
+      <v-col cols="2"> </v-col>
     </v-row>
     <v-row>
       <RecipeCardIngredientChip
