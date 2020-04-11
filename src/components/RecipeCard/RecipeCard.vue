@@ -1,6 +1,6 @@
 <template>
   <v-sheet color="grey lighten-4" shaped class="recipe-card wrap-box">
-    <v-row>
+    <v-row class="mb-4">
       <v-col cols="8">
         <div class="display-1 mb-4">{{ recipe.name }}</div>
         <div>
@@ -86,6 +86,6 @@ export default {
 
 <style lang="scss" scoped>
 .recipe-card {
-  padding: 90px 100px;
+  padding: 90px 100px 90px 100px;
 }
 </style>

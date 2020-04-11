@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Frame2 from '../views/Frame2.vue';
 import Search from '../views/Search.vue';
-import Chose from '../views/Chose.vue';
+import Choose from '../views/Choose.vue';
 
 Vue.use(VueRouter);
 
@@ -11,11 +11,16 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: Choose,
   },
   {
     path: '/search',
     name: 'Search',
+    component: Home,
+  },
+  {
+    path: '/search_results',
+    name: 'SearchResults',
     component: Search,
   },
   {
@@ -32,11 +37,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
-  {
-    path: '/chose',
-    name: 'Chose',
-    component: Chose,
-  }
 ];
 
 const router = new VueRouter({
