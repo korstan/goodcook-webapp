@@ -1,9 +1,12 @@
 <template>
-  <v-card tile class="side-menu" color="#ffe27a" height="700">
+  <v-sheet tile class="side-menu" color="#ffe27a" height="700">
     <div class="d-flex flex-column align-center">
+      <div class="display-1 mb-3">Меню</div>
       <SideMenuSwitch label="Вот такая штука" />
+      <SideMenuSwitch label="И вот такая штука" />
+      <SideMenuSwitch label="А ещё вот такая штука" />
     </div>
-  </v-card>
+  </v-sheet>
 </template>
 
 <script>
@@ -18,5 +21,6 @@ export default {
 <style lang="scss" scoped>
 .side-menu {
   border-radius: 100px;
+  padding: 32px 45px;
 }
 </style>

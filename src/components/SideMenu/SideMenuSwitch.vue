@@ -1,9 +1,9 @@
 <template>
-  <div class="switch-group d-flex align-center justify-space-around">
-    <v-switch></v-switch>
+  <div class="switch-group d-flex align-center justify-space-between">
     <label>
       {{ label }}
     </label>
+    <v-switch color="grey darken-1"></v-switch>
   </div>
 </template>
 
@@ -13,9 +13,9 @@ export default {
   props: {
     label: {
       type: [String],
-      default: '',
-    },
-  },
+      default: ''
+    }
+  }
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <v-content>
     <v-row justify="space-between" align="center">
-      <v-col cols="3">
+      <v-col cols="3" class="d-flex">
         <Logo
           height="220"
           @logoClick="() => this.$router.push('/')"
