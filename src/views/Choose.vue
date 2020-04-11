@@ -1,29 +1,29 @@
 <template>
-  <div class="choseMenu m-t-125">
-    <h1 class="choseMenu__title text-center">This is an chose page</h1>
-    <div class="choseMenu__card m-t-50">
+  <div class="chooseMenu m-t-125">
+    <h1 class="chooseMenu__title text-center">This is an choose page</h1>
+    <div class="chooseMenu__card m-t-50">
       <div>
-        <choseButton class="p-t-30 p-b-0" @click="() => this.$router.push('/')">
+        <chooseButton class="p-t-30 p-b-0" @click="() => this.$router.push('/')">
           <v-img
-            class="choseMenu__card-icon"
+            class="chooseMenu__card-icon"
             contain
             src="@/assets/recipes-logo.svg"
             alt="Сковородка с яишенкой"
             srcset=""
           />
-        </choseButton>
+        </chooseButton>
         <h2 class="text-center m-t-30">я знаю чего я хочу</h2>
       </div>
       <div>
-        <choseButton @click="() => this.$router.push('/')">
+        <chooseButton @click="() => this.$router.push('/')">
           <v-img
-            class="choseMenu__card-icon"
+            class="chooseMenu__card-icon"
             contain
             src="@/assets/ingredients-logo.svg"
             alt="Игридиенты для яишенки"
             srcset=""
           />
-        </choseButton>
+        </chooseButton>
         <h2 class="text-center m-t-30">я не знаю чего я хочу</h2>
       </div>
     </div>
@@ -31,16 +31,16 @@
 </template>
 
 <script>
-import choseButton from '@/components/ChoseButton.vue';
+import chooseButton from '@/components/ChooseButton.vue';
 
 export default {
-  name: 'Chose',
-  components: { choseButton }
+  name: 'Choose',
+  components: { chooseButton }
 };
 </script>
 
 <style lang="scss" scoped>
-.choseMenu {
+.chooseMenu {
   &__card {
     display: flex;
     flex-direction: row;

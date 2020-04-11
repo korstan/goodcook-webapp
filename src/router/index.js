@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Frame2 from '../views/Frame2.vue';
 import Search from '../views/Search.vue';
-import Chose from '../views/Chose.vue';
+import Choose from '../views/Choose.vue';
 
 Vue.use(VueRouter);
 
@@ -33,9 +33,9 @@ const routes = [
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
   {
-    path: '/chose',
-    name: 'Chose',
-    component: Chose,
+    path: '/choose',
+    name: 'Choose',
+    component: Choose,
   }
 ];
 

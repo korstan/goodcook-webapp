@@ -1,17 +1,17 @@
 <template>
-  <div @click="() => this.$emit('click')" class="choseButton">
+  <div @click="() => this.$emit('click')" class="chooseButton">
     <slot> </slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ChoseButton",
+  name: "ChooseButton",
 };
 </script>
 
 <style lang="scss" scoped>
-.choseButton {
+.chooseButton {
   background: $primary-color;
   border-radius: $default-border-radius;
   width: 300px;
