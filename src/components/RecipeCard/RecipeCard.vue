@@ -1,5 +1,5 @@
 <template>
-  <v-sheet color="grey lighten-4" shaped class="recipe-card">
+  <v-sheet color="grey lighten-4" shaped class="recipe-card wrap-box">
     <v-row>
       <v-col cols="8">
         <div class="display-1 mb-4">{{ recipe.name }}</div>
@@ -78,7 +78,6 @@ export default {
 
 <style lang="scss" scoped>
 .recipe-card {
-  border-radius: 100px;
   padding: 90px 100px;
 }
 </style>

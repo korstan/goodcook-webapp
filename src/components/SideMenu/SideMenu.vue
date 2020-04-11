@@ -1,5 +1,5 @@
 <template>
-  <v-sheet tile class="side-menu" color="#ffe27a" height="700">
+  <v-sheet tile class="side-menu wrap-box" color="#ffe27a" height="700">
     <div class="d-flex flex-column align-center">
       <div class="display-1 mb-3">Меню</div>
       <SideMenuSwitch label="Вот такая штука" />

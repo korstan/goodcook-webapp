@@ -7,3 +7,8 @@ html {
   margin: 0;
   padding: 0;
 }
+
+.wrap-box {
+  box-shadow: $wrap-box-shadow;
+  border-radius: $wrap-border-radius;
+}
