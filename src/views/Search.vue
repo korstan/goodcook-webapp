@@ -9,7 +9,7 @@
         />
       </v-col>
       <v-col cols="8">
-        <SearchBar :value="query" class="mt-6" />
+        <SearchBar :key="query" :value="query" class="mt-6" />
       </v-col>
     </v-row>
     <v-row justify="space-between">
@@ -25,6 +25,7 @@
           type="card"
         ></v-skeleton-loader>
         <RecipeCard
+          @ingredientClick="handleIngredientClick"
           v-else
           v-for="recipe in recipes"
           :key="recipe.name"
@@ -65,6 +66,7 @@ export default {
     this.fetch();
   },
   methods: {
+    ...mapActions('search', ['NEW_QUERY']),
     async fetch() {
       const req = [this.query];
       console.log(req);
@@ -72,6 +74,10 @@ export default {
       const { data } = await Recipes.get(req);
       this.isLoading = false;
       this.recipes = data.recipes.slice(0, 10);
+    },
+    handleIngredientClick(e) {
+      this.NEW_QUERY(e);
+      this.fetch();
     }
   }
 };

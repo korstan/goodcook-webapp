@@ -18,11 +18,12 @@
     </v-row>
     <v-row>
       <RecipeCardIngredientChip
+        @ingredientClick="handleIngredientClick"
+        class="mb-3"
         v-for="ingredient in recipe.ingredients"
         :key="recipe.name + '_' + ingredient.name"
-      >
-        {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.measure }}
-      </RecipeCardIngredientChip>
+        :ingredient="ingredient"
+      />
     </v-row>
   </v-sheet>
 </template>
@@ -74,7 +75,12 @@ export default {
         };
       }
     }
-  }
+  },
+  methods: {
+    handleIngredientClick(ingredientName) {
+      this.$emit('ingredientClick', ingredientName);
+    }
+  },
 };
 </script>
 
