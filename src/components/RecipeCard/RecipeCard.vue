@@ -17,20 +17,19 @@
       <v-col cols="4"> </v-col>
     </v-row>
     <v-row>
-      <v-chip
-        class="mr-4"
-        v-for="ingredient in recipe.ingredients"
-        :key="recipe.name + '_' + ingredient.name"
-      >
-        {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.measure }}
+      <RecipeCardIngredientChip v-for="ingredient in recipe.ingredients"
+        :key="recipe.name + '_' + ingredient.name"> {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.measure }} </RecipeCardIngredientChip>
       </v-chip>
     </v-row>
   </v-sheet>
 </template>
 
 <script>
+import RecipeCardIngredientChip from '@/components/RecipeCard/RecipeCardIngredientChip';
+
 export default {
   name: 'RecipeCard',
+  components: {RecipeCardIngredientChip},
   props: {
     recipe: {
       type: [Object],
