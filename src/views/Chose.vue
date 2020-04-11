@@ -3,7 +3,7 @@
     <h1 class="choseMenu__title text-center">This is an chose page</h1>
     <div class="choseMenu__card m-t-50">
       <div>
-        <choseButton class="p-t-30 p-b-0">
+        <choseButton class="p-t-30 p-b-0" @click="() => this.$router.push('/')">
           <v-img
             class="choseMenu__card-icon"
             contain
@@ -15,7 +15,7 @@
         <h2 class="text-center m-t-30">я знаю чего я хочу</h2>
       </div>
       <div>
-        <choseButton>
+        <choseButton @click="() => this.$router.push('/')">
           <v-img
             class="choseMenu__card-icon"
             contain
@@ -31,11 +31,11 @@
 </template>
 
 <script>
-import choseButton from "@/components/ChoseButton.vue";
+import choseButton from '@/components/ChoseButton.vue';
 
 export default {
-  name: "Chose",
-  components: { choseButton },
+  name: 'Chose',
+  components: { choseButton }
 };
 </script>
 
