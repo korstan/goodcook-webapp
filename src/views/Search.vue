@@ -16,8 +16,7 @@
           class="mt-6 ml-11"
         />
       </v-col>
-      <v-col cols="1">
-        </v-col>
+      <v-col cols="1"> </v-col>
     </v-row>
     <v-row justify="space-between">
       <v-col cols="3">
@@ -28,13 +27,11 @@
           v-if="isLoading"
           v-for="n in 1"
           :key="n"
-          min-width="100%"
           type="card"
           class="mb-10 ml-11"
         ></v-skeleton-loader>
         <RecipeCard
           @ingredientClick="searchNewQuery"
-
           v-else
           v-for="recipe in recipes"
           :key="recipe.name"
@@ -42,30 +39,29 @@
           class="mb-10 ml-11"
         />
       </v-col>
-      <v-col cols="1">
-        </v-col>
+      <v-col cols="1"> </v-col>
     </v-row>
   </v-content>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 
-import Logo from '@/components/Logo.vue';
-import SideMenu from '@/components/SideMenu/SideMenu.vue';
-import SearchBar from '@/components/SearchBar.vue';
-import RecipeCard from '@/components/RecipeCard/RecipeCard.vue';
+import Logo from "@/components/Logo.vue";
+import SideMenu from "@/components/SideMenu/SideMenu.vue";
+import SearchBar from "@/components/SearchBar.vue";
+import RecipeCard from "@/components/RecipeCard/RecipeCard.vue";
 
-import { RepositoryFactory } from '@/utils/repository/factory';
-const Recipes = RepositoryFactory.get('recipes');
+import { RepositoryFactory } from "@/utils/repository/factory";
+const Recipes = RepositoryFactory.get("recipes");
 
 export default {
-  name: 'Search',
+  name: "Search",
   components: { Logo, SideMenu, SearchBar, RecipeCard },
   data() {
     return {
       isLoading: false,
-      searchMode: 'ingredients',
+      searchMode: "ingredients",
       recipes: []
     };
   },
@@ -79,16 +75,16 @@ export default {
     this.fetch();
   },
   methods: {
-    ...mapActions('search', ['NEW_QUERY']),
+    ...mapActions("search", ["NEW_QUERY"]),
     async fetch() {
       const req = [this.query];
       this.isLoading = true;
       let response = {};
       switch (this.searchMode) {
-        case 'meals':
+        case "meals":
           response = await Recipes.getByMeal(req);
           break;
-        case 'ingredients':
+        case "ingredients":
         default:
           response = await Recipes.getByIngredients(req);
           break;
