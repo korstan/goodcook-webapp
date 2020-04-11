@@ -11,11 +11,16 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: Choose,
   },
   {
     path: '/search',
     name: 'Search',
+    component: Home,
+  },
+  {
+    path: '/search_results',
+    name: 'SearchResults',
     component: Search,
   },
   {
@@ -32,11 +37,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
-  {
-    path: '/choose',
-    name: 'Choose',
-    component: Choose,
-  }
 ];
 
 const router = new VueRouter({
