@@ -3,7 +3,7 @@
     <h1 class="chooseMenu__title text-center">This is an choose page</h1>
     <div class="chooseMenu__card m-t-50">
       <div>
-        <chooseButton class="p-t-30 p-b-0" @click="() => this.$router.push('/search')">
+        <chooseButton class="p-t-30 p-b-0" @click="() => this.$router.push('/search?mode=meals')">
           <v-img
             class="chooseMenu__card-icon"
             contain
@@ -15,7 +15,7 @@
         <h2 class="text-center m-t-30">я знаю чего я хочу</h2>
       </div>
       <div>
-        <chooseButton @click="() => this.$router.push('/search')">
+        <chooseButton @click="() => this.$router.push('/search?mode=ingredients')">
           <v-img
             class="chooseMenu__card-icon"
             contain
