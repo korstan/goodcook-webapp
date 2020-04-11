@@ -4,7 +4,9 @@
       <v-col cols="8">
         <div class="display-1 mb-4 pl-0">{{ recipe.name }}</div>
         <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ex
+          Подготовьте все ингредиенты. 
+          В глубокой миске соедините
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ex {{imperdiet.name}}
           nulla, eleifend id sapien eu, facilisis condimentum metus. Nullam vel
           libero mollis libero vehicula volutpat. Duis mollis mi vel semper
           convallis. Cras viverra, ex sit amet molestie bibendum, ipsum ipsum

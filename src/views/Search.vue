@@ -1,9 +1,9 @@
 <template>
   <v-content>
-    <v-row justify="space-between" align="center">
+    <v-row justify="space-between" align="center" class="mb-6">
       <v-col cols="3" class="d-flex">
         <Logo
-          height="120"
+          height="110"
           @logoClick="() => this.$router.push('/')"
           :style="{ cursor: 'pointer' }"
         />
@@ -25,8 +25,16 @@
       <v-col cols="8">
         <v-skeleton-loader
           v-if="isLoading"
-          v-for="n in 1"
-          :key="n"
+          type="card"
+          class="mb-10 ml-11"
+        ></v-skeleton-loader>
+        <v-skeleton-loader
+          v-if="isLoading"
+          type="card"
+          class="mb-10 ml-11"
+        ></v-skeleton-loader>
+        <v-skeleton-loader
+          v-if="isLoading"
           type="card"
           class="mb-10 ml-11"
         ></v-skeleton-loader>
