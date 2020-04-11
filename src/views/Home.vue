@@ -1,8 +1,10 @@
 <template>
-  <v-container class="home">
-    <Logo />
-    <SearchBar width="50%" @submit="onSearchSubmit" />
-  </v-container>
+  <v-content>
+    <div class="home d-flex flex-column align-center">
+      <Logo class="mb-5" />
+      <SearchBar width="60%" @submit="onSearchSubmit" />
+    </div>
+  </v-content>
 </template>
 
 <script>
@@ -13,28 +15,18 @@ import { mapActions } from 'vuex';
 export default {
   name: 'Home',
   components: { Logo, SearchBar },
-  mounted() {
-    this.HIDE_HEADER();
-  },
   methods: {
-    ...mapActions('ui', ['SHOW_HEADER', 'HIDE_HEADER', 'TOGGLE_HEADER']),
     ...mapActions('search', ['NEW_QUERY']),
     onSearchSubmit: function(query) {
       this.$router.push('/search');
       this.NEW_QUERY(query);
-      this.SHOW_HEADER();
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .home {
-  position: absolute;
   padding-top: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 </style>

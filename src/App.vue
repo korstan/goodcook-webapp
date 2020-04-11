@@ -1,10 +1,9 @@
 <template>
   <v-app>
-    <Header v-if="isHeaderVisible" />
     <v-content>
       <div id="app">
         <div class="page-wrapper">
-          <v-scroll-y-reverse-transition leave-absolute>
+          <v-scroll-y-reverse-transition>
             <router-view />
           </v-scroll-y-reverse-transition>
         </div>
@@ -14,16 +13,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header';
-
 export default {
   name: 'App',
-  components: { Header },
-  computed: {
-    isHeaderVisible() {
-      return this.$store.state.ui.isHeaderVisible;
-    }
-  },
 };
 </script>
 

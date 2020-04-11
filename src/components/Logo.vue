@@ -1,5 +1,6 @@
 <template>
   <v-img
+    @click="() => this.$emit('logoClick')"
     :width="width"
     :height="height"
     contain
@@ -15,9 +16,11 @@ export default {
   props: {
     width: {
       type: [Number, String],
+      default: 310,
     },
     height: {
       type: [Number, String],
+      default: 160,
     },
   },
 };

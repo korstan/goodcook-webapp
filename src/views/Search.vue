@@ -1,31 +1,79 @@
 <template>
-  <div class="d-flex">
-    <div>
-      <SideMenu />
-    </div>
-    <div>
-      <RecipeCard />
-      <RecipeCard />
-      <RecipeCard />
-      <RecipeCard />
-    </div>
-  </div>
+  <v-content>
+    <v-row justify="space-between" align="center">
+      <v-col cols="3">
+        <Logo
+          height="220"
+          @logoClick="() => this.$router.push('/')"
+          :style="{ cursor: 'pointer' }"
+        />
+      </v-col>
+      <v-col cols="8">
+        <SearchBar :value="query" class="mt-6" />
+      </v-col>
+    </v-row>
+    <v-row justify="space-between">
+      <v-col cols="3">
+        <SideMenu />
+      </v-col>
+      <v-col cols="8">
+        <v-skeleton-loader
+          v-if="isLoading"
+          v-for="n in 3"
+          :key="n"
+          min-width="100%"
+          type="card"
+        ></v-skeleton-loader>
+        <RecipeCard
+          v-else
+          v-for="recipe in recipes"
+          :key="recipe.name"
+          :recipe="recipe"
+          class="mb-10"
+        />
+      </v-col>
+    </v-row>
+  </v-content>
 </template>
 
 <script>
-import SideMenu from '@/components/SideMenu/SideMenu.vue';
-import RecipeCard from '@/components/RecipeCard/RecipeCard.vue';
 import { mapActions } from 'vuex';
+
+import Logo from '@/components/Logo.vue';
+import SideMenu from '@/components/SideMenu/SideMenu.vue';
+import SearchBar from '@/components/SearchBar.vue';
+import RecipeCard from '@/components/RecipeCard/RecipeCard.vue';
+
+import { RepositoryFactory } from '@/utils/repository/factory';
+const Recipes = RepositoryFactory.get('recipes');
 
 export default {
   name: 'Search',
-  components: { SideMenu, RecipeCard },
-  mounted() {
-    this.SHOW_HEADER();
+  components: { Logo, SideMenu, SearchBar, RecipeCard },
+  data() {
+    return {
+      isLoading: false,
+      recipes: []
+    };
+  },
+  computed: {
+    query() {
+      return this.$store.state.search.query;
+    }
+  },
+  created() {
+    this.fetch();
   },
   methods: {
-    ...mapActions('ui', ['SHOW_HEADER']),
-  },
+    async fetch() {
+      const req = [this.query];
+      console.log(req);
+      this.isLoading = true;
+      const { data } = await Recipes.get(req);
+      this.isLoading = false;
+      this.recipes = data.recipes.slice(0, 10);
+    }
+  }
 };
 </script>
 

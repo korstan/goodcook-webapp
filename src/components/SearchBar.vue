@@ -4,10 +4,10 @@
     color="amber lighten-1"
     :background-color="backgroundColor"
     shaped
-    class="searchbar mt-2"
+    class="searchbar"
     v-on:keyup="checkPressedKey"
     :height="height"
-    :style="{ fontSize, width, height: '100%' }"
+    :style="{ fontSize, width }"
     v-model="query"
   >
     <template v-slot:prepend-inner>
@@ -53,7 +53,7 @@ export default {
       }
     },
     submit: function() {
-      this.$emit('submit', this.query);
+      if (this.query) this.$emit('submit', this.query);
     },
   },
 };
