@@ -1,9 +1,15 @@
 import Repository from '@/utils/repository';
 
-const endpoint = '/ingredients_search/';
+const ingredientsEndpoint = '/ingredients_search/';
+const mealsEndpoint = '/meals_search/';
 
 export default {
-  get(ingredientsArray) {
-    return Repository.post(endpoint, { ingredients: ingredientsArray });
+  getByIngredients(ingredientsArray) {
+    return Repository.post(ingredientsEndpoint, {
+      ingredients: ingredientsArray,
+    });
   },
+  getByMeal(mealArray) {
+    return Repository.post(mealsEndpoint, { meals: mealArray });
+  }
 };

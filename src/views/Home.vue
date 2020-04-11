@@ -18,10 +18,10 @@ export default {
   methods: {
     ...mapActions('search', ['NEW_QUERY']),
     onSearchSubmit: function(query) {
-      this.$router.push('/search_results');
+      this.$router.push(`/search_results?mode=${this.$route.query.mode}`);
       this.NEW_QUERY(query);
     }
-  }
+  },
 };
 </script>
 

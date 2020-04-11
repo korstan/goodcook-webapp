@@ -24,7 +24,7 @@
       <v-col cols="8">
         <v-skeleton-loader
           v-if="isLoading"
-          v-for="n in 3"
+          v-for="n in 1"
           :key="n"
           min-width="100%"
           type="card"
@@ -59,6 +59,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      searchMode: 'ingredients',
       recipes: []
     };
   },
@@ -68,17 +69,26 @@ export default {
     }
   },
   created() {
+    this.searchMode = this.$route.query.mode;
     this.fetch();
   },
   methods: {
     ...mapActions('search', ['NEW_QUERY']),
     async fetch() {
       const req = [this.query];
-      console.log(req);
       this.isLoading = true;
-      const { data } = await Recipes.get(req);
+      let response = {};
+      switch (this.searchMode) {
+        case 'meals':
+          response = await Recipes.getByMeal(req);
+          break;
+        case 'ingredients':
+        default:
+          response = await Recipes.getByIngredients(req);
+          break;
+      }
       this.isLoading = false;
-      this.recipes = data.recipes;
+      this.recipes = response.data.recipes;
     },
     searchNewQuery(query) {
       this.NEW_QUERY(query);
