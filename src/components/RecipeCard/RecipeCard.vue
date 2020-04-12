@@ -6,7 +6,7 @@
         <div>
           Подготовьте все ингредиенты. 
           В глубокой миске соедините
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ex {{imperdiet.name}}
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ex
           nulla, eleifend id sapien eu, facilisis condimentum metus. Nullam vel
           libero mollis libero vehicula volutpat. Duis mollis mi vel semper
           convallis. Cras viverra, ex sit amet molestie bibendum, ipsum ipsum
