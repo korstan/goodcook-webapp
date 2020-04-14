@@ -22,8 +22,8 @@
       <RecipeCardIngredientChip
         @ingredientClick="handleIngredientClick"
         class="mb-3"
-        v-for="ingredient in recipe.ingredients"
-        :key="recipe.name + '_' + ingredient.name"
+        v-for="(ingredient, i) in recipe.ingredients"
+        :key="recipe.name + '_' + ingredient.name + '_' + i"
         :ingredient="ingredient"
       />
     </v-row>

@@ -74,10 +74,18 @@
         </div>
       </div>
     </div>
+    <Footer><a href="/">Main</a></Footer>
   </div>
 </template>
 
 <script>
+import Footer from '@/components/Footer.vue';
+
+export default {
+  name: 'About',
+  components: {Footer}
+}
+
 var clickCounter = 0;
 document.body.onclick = function() {
   clickCounter += 1;
