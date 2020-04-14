@@ -51,6 +51,9 @@
           :recipe="recipe"
           class="mb-10 ml-11"
         />
+        <h1 v-if="!isLoading && !recipes.length" class="text-center m-t-30">
+          Не удалось найти рецепты по вашему запросу :c
+        </h1>
       </v-col>
       <v-col cols="1"> </v-col>
     </v-row>
@@ -105,7 +108,7 @@ export default {
   methods: {
     ...mapActions('search', ['NEW_QUERY']),
     async fetch() {
-      if(!this.query) {
+      if (!this.query) {
         console.log('empty query!');
         return;
       }
