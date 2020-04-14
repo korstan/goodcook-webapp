@@ -156,7 +156,7 @@ export default {
     handleIngredientClick(query) {
       console.log('handleIngrClick', query);
       this.setSearchMode(SEARCH_MODES.ingredients.string);
-      this.searchNewQuery(query);
+      this.searchNewQuery([query]);
     },
     searchNewQuery(queryArray) {
       this.NEW_QUERY(queryArray);
