@@ -6,7 +6,7 @@
         <div>
           Подготовьте все ингредиенты. 
           В глубокой миске соедините
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ex {{imperdiet.name}}
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ex
           nulla, eleifend id sapien eu, facilisis condimentum metus. Nullam vel
           libero mollis libero vehicula volutpat. Duis mollis mi vel semper
           convallis. Cras viverra, ex sit amet molestie bibendum, ipsum ipsum
@@ -22,8 +22,8 @@
       <RecipeCardIngredientChip
         @ingredientClick="handleIngredientClick"
         class="mb-3"
-        v-for="ingredient in recipe.ingredients"
-        :key="recipe.name + '_' + ingredient.name"
+        v-for="(ingredient, i) in recipe.ingredients"
+        :key="recipe.name + '_' + ingredient.name + '_' + i"
         :ingredient="ingredient"
       />
     </v-row>

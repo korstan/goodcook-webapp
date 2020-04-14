@@ -39,7 +39,7 @@
           class="mb-10 ml-11"
         ></v-skeleton-loader>
         <RecipeCard
-          @ingredientClick="searchNewQuery"
+          @ingredientClick="handleIngredientClick"
           v-else
           v-for="recipe in recipes"
           :key="recipe.name"
@@ -53,23 +53,25 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex';
 
-import Logo from "@/components/Logo.vue";
-import SideMenu from "@/components/SideMenu/SideMenu.vue";
-import SearchBar from "@/components/SearchBar.vue";
-import RecipeCard from "@/components/RecipeCard/RecipeCard.vue";
+import Logo from '@/components/Logo.vue';
+import SideMenu from '@/components/SideMenu/SideMenu.vue';
+import SearchBar from '@/components/SearchBar.vue';
+import RecipeCard from '@/components/RecipeCard/RecipeCard.vue';
 
-import { RepositoryFactory } from "@/utils/repository/factory";
-const Recipes = RepositoryFactory.get("recipes");
+import { RepositoryFactory } from '@/utils/repository/factory';
+const Recipes = RepositoryFactory.get('recipes');
+
+const SEARCH_MODES = { ingredients: 'ingredients', meals: 'meals' };
 
 export default {
-  name: "Search",
+  name: 'Search',
   components: { Logo, SideMenu, SearchBar, RecipeCard },
   data() {
     return {
       isLoading: false,
-      searchMode: "ingredients",
+      searchMode: 'ingredients',
       recipes: []
     };
   },
@@ -83,22 +85,32 @@ export default {
     this.fetch();
   },
   methods: {
-    ...mapActions("search", ["NEW_QUERY"]),
+    ...mapActions('search', ['NEW_QUERY']),
     async fetch() {
       const req = [this.query];
       this.isLoading = true;
       let response = {};
       switch (this.searchMode) {
-        case "meals":
+        case SEARCH_MODES.meals:
           response = await Recipes.getByMeal(req);
           break;
-        case "ingredients":
+        case SEARCH_MODES.ingredients:
         default:
           response = await Recipes.getByIngredients(req);
           break;
       }
       this.isLoading = false;
       this.recipes = response.data.recipes;
+    },
+    setSearchMode(mode) {
+      console.log('setSearchMode', mode);
+      this.searchMode = mode;
+      this.$router.push({ query: { mode: mode } });
+    },
+    handleIngredientClick(query) {
+      console.log('handleIngrClick', query);
+      this.setSearchMode(SEARCH_MODES.ingredients);
+      this.searchNewQuery(query);
     },
     searchNewQuery(query) {
       this.NEW_QUERY(query);
