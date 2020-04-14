@@ -1,9 +1,13 @@
 export default {
   namespaced: true,
   state: {
-    query: '',
+    query: [''],
   },
-  getters: {},
+  getters: {
+    queryToString: state => {
+      return state.query.join();
+    }
+  },
   actions: {
     NEW_QUERY: ({ commit }, query) => {
       commit('SET_QUERY', query);

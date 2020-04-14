@@ -24,7 +24,7 @@ export default {
   components: { Logo, SearchBar },
   data() {
     return {
-      placeholder: ''
+      placeholder: '',
     };
   },
   created() {
@@ -35,11 +35,11 @@ export default {
   },
   methods: {
     ...mapActions('search', ['NEW_QUERY']),
-    onSearchSubmit: function(query) {
+    onSearchSubmit: function(queryArray) {
       this.$router.push(
         `/search_results?mode=${this.$route.query.mode || 'ingredients'}`
       );
-      this.NEW_QUERY(query);
+      this.NEW_QUERY(queryArray);
     }
   }
 };
