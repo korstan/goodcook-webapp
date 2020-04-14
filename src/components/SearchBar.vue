@@ -23,31 +23,31 @@ export default {
   props: {
     value: {
       type: [String],
-      default: '',
+      default: ''
     },
     placeholder: {
       type: [String],
-      default: '',
+      default: ''
     },
     fontSize: {
       type: [String],
-      default: '16pt',
+      default: '16pt'
     },
     height: {
       type: [String],
-      default: '1',
+      default: '1'
     },
     width: {
-      type: [String],
+      type: [String]
     },
     backgroundColor: {
       type: [String],
-      default: 'grey lighten-4',
-    },
+      default: 'grey lighten-4'
+    }
   },
   data() {
     return {
-      query: this.value,
+      query: this.value
     };
   },
   methods: {
@@ -57,9 +57,12 @@ export default {
       }
     },
     submit: function() {
-      if (this.query) this.$emit('submit', this.query);
-    },
-  },
+      if (this.query) {
+        const queryArray = this.query.split(',').map(item => item.trim());
+        this.$emit('submit', queryArray);
+      }
+    }
+  }
 };
 </script>
 

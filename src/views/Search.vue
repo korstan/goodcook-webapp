@@ -10,9 +10,9 @@
       </v-col>
       <v-col cols="8">
         <SearchBar
-          :key="query"
+          :key="queryString"
           @submit="searchNewQuery"
-          :value="query"
+          :value="queryString"
           class="mt-6 ml-11"
         />
       </v-col>
@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 import Logo from '@/components/Logo.vue';
 import SideMenu from '@/components/SideMenu/SideMenu.vue';
@@ -97,7 +97,8 @@ export default {
     };
   },
   computed: {
-    query() {
+    ...mapGetters('search',{queryString: 'queryToString'}),
+    queryArray() {
       return this.$store.state.search.query;
     }
   },
@@ -108,20 +109,19 @@ export default {
   methods: {
     ...mapActions('search', ['NEW_QUERY']),
     async fetch() {
-      if (!this.query) {
+      if (!this.queryArray.length) {
         console.log('empty query!');
         return;
       }
-      const req = [this.query];
       this.isLoading = true;
       let response = {};
       switch (this.searchMode) {
         case SEARCH_MODES.meals.string:
-          response = await Recipes.getByMeal(req);
+          response = await Recipes.getByMeal(this.queryArray);
           break;
         case SEARCH_MODES.ingredients.string:
         default:
-          response = await Recipes.getByIngredients(req);
+          response = await Recipes.getByIngredients(this.queryArray);
           break;
       }
       this.isLoading = false;
@@ -156,10 +156,10 @@ export default {
     handleIngredientClick(query) {
       console.log('handleIngrClick', query);
       this.setSearchMode(SEARCH_MODES.ingredients.string);
-      this.searchNewQuery(query);
+      this.searchNewQuery([query]);
     },
-    searchNewQuery(query) {
-      this.NEW_QUERY(query);
+    searchNewQuery(queryArray) {
+      this.NEW_QUERY(queryArray);
       this.fetch();
     }
   }
