@@ -90,7 +90,7 @@ export default {
       isLoading: false,
       searchMode: SEARCH_MODES.ingredients.string,
       recipes: [],
-      radio: SEARCH_MODES.ingredients.radio, //0 - ingredients, 1 - meals
+      radio: SEARCH_MODES.ingredients.radio //0 - ingredients, 1 - meals
     };
   },
   computed: {
@@ -105,6 +105,10 @@ export default {
   methods: {
     ...mapActions('search', ['NEW_QUERY']),
     async fetch() {
+      if(!this.query) {
+        console.log('empty query!');
+        return;
+      }
       const req = [this.query];
       this.isLoading = true;
       let response = {};

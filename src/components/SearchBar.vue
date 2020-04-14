@@ -3,6 +3,7 @@
     solo
     color="amber lighten-1"
     :background-color="backgroundColor"
+    :placeholder="placeholder"
     shaped
     class="searchbar"
     v-on:keyup="checkPressedKey"
@@ -21,6 +22,10 @@ export default {
   name: 'SearchBar',
   props: {
     value: {
+      type: [String],
+      default: '',
+    },
+    placeholder: {
       type: [String],
       default: '',
     },

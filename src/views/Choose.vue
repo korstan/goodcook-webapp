@@ -27,15 +27,17 @@
         <h2 class="text-center m-t-30">я не знаю чего я хочу</h2>
       </div>
     </div>
+    <Footer><a href="/about">About</a></Footer>
   </div>
 </template>
 
 <script>
 import chooseButton from '@/components/ChooseButton.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Choose',
-  components: { chooseButton }
+  components: { chooseButton, Footer }
 };
 </script>
 
