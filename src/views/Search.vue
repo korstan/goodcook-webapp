@@ -20,7 +20,12 @@
     </v-row>
     <v-row justify="space-between">
       <v-col cols="3">
-        <SideMenu />
+        <SideMenu>
+          <v-radio-group @change="onRadioToggle" v-model="radio">
+            <SideMenuRadio label="Поиск по ингредиентам" />
+            <SideMenuRadio label="Поиск по рецептам" />
+          </v-radio-group>
+        </SideMenu>
       </v-col>
       <v-col cols="8">
         <v-skeleton-loader
@@ -57,22 +62,35 @@ import { mapActions } from 'vuex';
 
 import Logo from '@/components/Logo.vue';
 import SideMenu from '@/components/SideMenu/SideMenu.vue';
+import SideMenuSwitch from '@/components/SideMenu/SideMenuSwitch.vue';
+import SideMenuRadio from '@/components/SideMenu/SideMenuRadio.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import RecipeCard from '@/components/RecipeCard/RecipeCard.vue';
 
 import { RepositoryFactory } from '@/utils/repository/factory';
 const Recipes = RepositoryFactory.get('recipes');
 
-const SEARCH_MODES = { ingredients: 'ingredients', meals: 'meals' };
+const SEARCH_MODES = {
+  ingredients: { string: 'ingredients', radio: 0 },
+  meals: { string: 'meals', radio: 1 }
+};
 
 export default {
   name: 'Search',
-  components: { Logo, SideMenu, SearchBar, RecipeCard },
+  components: {
+    Logo,
+    SideMenu,
+    SideMenuSwitch,
+    SideMenuRadio,
+    SearchBar,
+    RecipeCard
+  },
   data() {
     return {
       isLoading: false,
-      searchMode: 'ingredients',
-      recipes: []
+      searchMode: SEARCH_MODES.ingredients.string,
+      recipes: [],
+      radio: SEARCH_MODES.ingredients.radio, //0 - ingredients, 1 - meals
     };
   },
   computed: {
@@ -81,7 +99,7 @@ export default {
     }
   },
   created() {
-    this.searchMode = this.$route.query.mode;
+    this.setSearchMode(this.$route.query.mode);
     this.fetch();
   },
   methods: {
@@ -91,10 +109,10 @@ export default {
       this.isLoading = true;
       let response = {};
       switch (this.searchMode) {
-        case SEARCH_MODES.meals:
+        case SEARCH_MODES.meals.string:
           response = await Recipes.getByMeal(req);
           break;
-        case SEARCH_MODES.ingredients:
+        case SEARCH_MODES.ingredients.string:
         default:
           response = await Recipes.getByIngredients(req);
           break;
@@ -104,12 +122,33 @@ export default {
     },
     setSearchMode(mode) {
       console.log('setSearchMode', mode);
-      this.searchMode = mode;
+      switch (mode) {
+        case SEARCH_MODES.meals.string:
+          this.radio = SEARCH_MODES.meals.radio;
+          this.searchMode = SEARCH_MODES.meals.string;
+          break;
+        case SEARCH_MODES.ingredients.string:
+        default:
+          this.radio = SEARCH_MODES.ingredients.radio;
+          this.searchMode = SEARCH_MODES.ingredients.string;
+          break;
+      }
       this.$router.push({ query: { mode: mode } });
+    },
+    onRadioToggle(radioIndex) {
+      switch (radioIndex) {
+        case SEARCH_MODES.meals.radio:
+          this.setSearchMode(SEARCH_MODES.meals.string);
+          break;
+        case SEARCH_MODES.ingredients.radio:
+        default:
+          this.setSearchMode(SEARCH_MODES.ingredients.string);
+          break;
+      }
     },
     handleIngredientClick(query) {
       console.log('handleIngrClick', query);
-      this.setSearchMode(SEARCH_MODES.ingredients);
+      this.setSearchMode(SEARCH_MODES.ingredients.string);
       this.searchNewQuery(query);
     },
     searchNewQuery(query) {
